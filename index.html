@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <script src="angular.min.js"></script>
+  <script src="store_controller.js"></script>
+  <link type="text/css" rel="stylesheet" href="stylesheet.css">
+</head>
+<body ng-controller="StoreController">
+<form name="productForm" ng-submit="addProduct()">
+  <input type="text" name="name" ng-model="product.name" placeholder="name"/>
+  <input type="text" name="price" ng-model="product.price" placeholder="price"/>
+  <button>Add Product</button>
+</form>
+<div ng-repeat="product in products | orderBy:filter">
+  <ul>
+    <li>{{product.name}}</li>
+    <li>{{product.price | currency}}</li>
+    <li>{{product.created_at | date: 'medium'}}</li>
+  </ul>
+</div>
+</body>
+</html>
